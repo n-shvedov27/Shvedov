@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screen.main.MainFragment">
+    tools:context=".fragment.main.MainFragment">
 
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.page_screen.PagerFragment">
+        tools:context=".fragment.page_screen.PagerFragment">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
@@ -19,8 +19,7 @@
             android:layout_height="wrap_content"
             app:tabIndicatorColor="@color/blue"
             app:tabSelectedTextColor="@color/blue"
-            app:tabTextColor="@color/black"
-            app:tex/>
+            app:tabTextColor="@color/black"/>
 
     </androidx.viewpager.widget.ViewPager>
 

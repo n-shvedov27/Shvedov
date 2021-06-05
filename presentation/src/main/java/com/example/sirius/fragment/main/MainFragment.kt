@@ -1,4 +1,4 @@
-package com.example.sirius.screen.main
+package com.example.sirius.fragment.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.ViewPager
 import com.example.sirius.R
-import com.example.sirius.screen.page.PageFragment
+import com.example.sirius.fragment.page.PageFragment
 
 class MainFragment : Fragment() {
 

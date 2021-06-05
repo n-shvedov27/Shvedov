@@ -1,4 +1,4 @@
-package com.example.sirius.screen.main
+package com.example.sirius.fragment.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

@@ -7,8 +7,13 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.sirius.screen.main.MainFragment"
+        android:name="com.example.sirius.fragment.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/pageFragment"
+        android:name="com.example.sirius.fragment.page.PageFragment"
+        android:label="fragment_page"
+        tools:layout="@layout/fragment_page" />
 
 </navigation>
