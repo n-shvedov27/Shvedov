@@ -3,9 +3,11 @@ package com.example.sirius.fragment.main
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.SearchEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.ViewPager
+import com.example.domain.SearchType
 import com.example.sirius.R
 import com.example.sirius.fragment.page.PageFragment
 
@@ -26,9 +28,9 @@ class MainFragment : Fragment() {
         pagerAdapter = SimplePagerAdapter(
             fm = childFragmentManager,
             pages = listOf(
-                "Последние" to PageFragment(),
-                "Лучшие" to PageFragment(),
-                "Горячие" to PageFragment()
+                "Последние" to PageFragment.newInstance(SearchType.DATE),
+                "Лучшие" to PageFragment.newInstance(SearchType.RATING),
+                "Горячие" to PageFragment.newInstance(SearchType.HOT)
             )
         )
         pager.adapter = pagerAdapter
