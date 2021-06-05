@@ -1,0 +1,63 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/.idea
+
+*.*.*.*.apk.zip
+*.0.0.1.apk
+*.*.*.*.apk
+
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+/*/*/bin/
+/*/bin/
+/*/*/gen/
+/*/gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+.classpath
+.project
+
+# Android Studio
+.idea/
+/.gradle
+/*/local.properties
+/*/out
+/*/*/build
+/*/build
+/.build
+/*/*/production
+*.iws
+*.ipr
+*~
+*.swp
+*.iml
+*.hprof
+gradle
+
+/gradle_tasks/detekt/detekt_report.html
+/gradle_tasks/detekt/detekt_report.xml
