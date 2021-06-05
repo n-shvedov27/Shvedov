@@ -7,9 +7,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.sirius.R
+import com.example.sirius.core.di.UIComponent
+import com.example.sirius.core.ui.BaseFragment
 import com.example.sirius.fragment.image.ImageFragment
+import com.example.sirius.fragment.image.ImageFragmentViewModel
+import com.example.sirius.fragment.page.di.PageFragmentComponentHolder
 
-class PageFragment : Fragment() {
+class PageFragment : BaseFragment()  {
+
+    private val viewModel: ImageFragmentViewModel by injectViewModel()
+
+    override fun diComponent(): UIComponent = PageFragmentComponentHolder.getComponent()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
