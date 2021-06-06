@@ -4,6 +4,7 @@ import com.example.sirius.R
 import com.example.sirius.BR
 import com.example.sirius.core.di.UIComponent
 import com.example.sirius.core.ui.BaseFragment
+import com.example.sirius.fragment.error.ErrorFragment
 import com.example.sirius.fragment.page.PageFragment
 import com.example.sirius.fragment.main.di.MainFragmentComponentHolder
 
@@ -37,11 +38,13 @@ class MainFragment : BaseFragment()  {
 
     fun showStartPageFragment(url: String) {
         childFragmentManager.beginTransaction()
-            .add(R.id.image_fragment, PageFragment.newInstance(url))
+            .replace(R.id.image_fragment, PageFragment.newInstance(url))
             .commit()
     }
 
     fun showErrorLoadingFragment() {
-
+        childFragmentManager.beginTransaction()
+            .replace(R.id.image_fragment, ErrorFragment())
+            .commit()
     }
 }

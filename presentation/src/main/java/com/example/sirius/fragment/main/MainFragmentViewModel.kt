@@ -24,7 +24,7 @@ class MainFragmentViewModel @Inject constructor(
     private val _isLoadingVisible = MutableLiveData(false)
     val isLoadingVisible : LiveData<Boolean> = _isLoadingVisible
 
-    private var currentPage = 0
+    var currentPage = 0
 
     fun onNextClick() = launch {
 
@@ -35,7 +35,7 @@ class MainFragmentViewModel @Inject constructor(
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    fun onCreate() = launch {
+    fun loadCurrentPageData() = launch {
 
         val model = getImageByIndex.execute(currentPage)
         postViewEvents(StartPage(model.url))

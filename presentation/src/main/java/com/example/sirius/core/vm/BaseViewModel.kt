@@ -5,6 +5,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.sirius.core.event.ErrorEvent
 import com.example.sirius.core.event.ViewEvent
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -25,8 +26,9 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver, CoroutineScope {
         handleCoroutineException(exception)
     }
 
-    private fun handleCoroutineException(exception: Throwable) {
-        postViewEvents()
+    private fun handleCoroutineException(e: Throwable) {
+        Log.d(BaseViewModel::class.java.name, e.message ?: e.toString())
+        postViewEvents(ErrorEvent)
     }
 
     protected fun postViewEvents(vararg events: ViewEvent) = events.forEach(_events::setValue)
