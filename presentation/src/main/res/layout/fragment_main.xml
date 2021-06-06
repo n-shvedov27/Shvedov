@@ -19,40 +19,43 @@
 
         <FrameLayout
             android:id="@+id/image_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:visibility="@{vmMainFragment.isLoadingVisible ? View.GONE : View.VISIBLE}"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/next_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/prv_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Prev Button"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:enabled="@{vmMainFragment.isMoveToPreviousAvailable}"
             android:onClick="@{() -> vmMainFragment.onPreviousClick()}"
+            android:src="@drawable/ic_baseline_replay_24"
+            app:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/next_btn"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="#FFC800" />
 
-        <Button
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/next_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Next Button"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
             android:onClick="@{() -> vmMainFragment.onNextClick()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="@{vmMainFragment.isLoadingVisible ? View.VISIBLE : View.GONE}"
+            android:src="@drawable/ic_baseline_arrow_forward_24"
+            app:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/prv_button"
+            app:tint="#44FF00" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
