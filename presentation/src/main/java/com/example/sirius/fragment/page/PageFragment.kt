@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.sirius.R
 
-private const val URL_PARAM = "param2"
+private const val URL_PARAM = "url_param"
 
 class PageFragment : Fragment() {
 

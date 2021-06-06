@@ -40,4 +40,8 @@ class MainFragment : BaseFragment()  {
             .add(R.id.image_fragment, PageFragment.newInstance(url))
             .commit()
     }
+
+    fun showErrorLoadingFragment() {
+
+    }
 }

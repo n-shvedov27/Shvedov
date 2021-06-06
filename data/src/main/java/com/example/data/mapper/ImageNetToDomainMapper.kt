@@ -1,7 +1,7 @@
 package com.example.data.mapper
 
 import com.example.data.network.entity.ImageNet
-import com.example.domain.ImageDomain
+import com.example.domain.entity.ImageDomain
 import javax.inject.Inject
 
 class ImageNetToDomainMapper @Inject constructor(

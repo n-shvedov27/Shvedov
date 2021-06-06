@@ -26,7 +26,7 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver, CoroutineScope {
     }
 
     private fun handleCoroutineException(exception: Throwable) {
-        Log.e("MY_DEBUG", "handleCoroutineException: ${exception.message}")
+        postViewEvents()
     }
 
     protected fun postViewEvents(vararg events: ViewEvent) = events.forEach(_events::setValue)

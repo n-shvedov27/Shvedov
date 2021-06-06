@@ -9,7 +9,8 @@ import dagger.multibindings.IntoMap
 
 @Module(
     includes = [
-        MainFragmentDataModule::class
+        MainFragmentDataModule::class,
+        MainFragmentDomainModule::class
     ]
 )
 abstract class MainFragmentPresentationModule {
