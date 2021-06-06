@@ -21,3 +21,11 @@ class ToPreviousPage(private val url: String) : PageMoveEvent() {
         (fragment as? MainFragment)?.let { it.showPreviousPageFragment(url) }
     }
 }
+
+class StartPage(private val url: String) : PageMoveEvent() {
+
+    override fun execute(fragment: Fragment) {
+
+        (fragment as? MainFragment)?.let { it.showStartPageFragment(url) }
+    }
+}

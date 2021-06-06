@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.sirius.core.di.UIComponent
+import com.example.sirius.core.vm.BaseViewModel
 
 abstract class BaseFragment : Fragment() {
 
@@ -21,13 +22,23 @@ abstract class BaseFragment : Fragment() {
     @get:LayoutRes
     protected abstract val layoutId: Int
     protected abstract val dataBindingVariable: Int?
-    protected abstract val viewModel: ViewModel
+    protected abstract val viewModel: BaseViewModel
     protected abstract fun diComponent(): UIComponent
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
         viewModelFactory = createViewModelFactory()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        lifecycle.removeObserver(viewModel)
+    }
+
+    override fun onDestroyView() {
+        binding = null
+        super.onDestroyView()
     }
 
     final override fun onCreateView(
@@ -46,8 +57,11 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        lifecycle.addObserver(viewModel)
         dataBindingVariable?.let { binding?.setVariable(it, viewModel) }
         binding?.lifecycleOwner = viewLifecycleOwner
+
+        viewModel.events.observe(viewLifecycleOwner) { it.execute(this) }
     }
 
     private fun createViewModelFactory(): ViewModelProvider.Factory = with(diComponent()) {

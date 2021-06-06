@@ -1,39 +1,23 @@
 package com.example.sirius.fragment.main
 
-import android.util.Log
-import androidx.annotation.CallSuper
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.OnLifecycleEvent
 import com.example.domain.ImageRepository
-import com.example.sirius.core.event.ViewEvent
+import com.example.sirius.core.vm.BaseViewModel
+import com.example.sirius.fragment.main.event.StartPage
 import com.example.sirius.fragment.main.event.ToNextPage
 import com.example.sirius.fragment.main.event.ToPreviousPage
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
 class MainFragmentViewModel @Inject constructor(
 
     private val repository: ImageRepository
 
-) : ViewModel(), CoroutineScope {
+) : BaseViewModel() {
 
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + supervisorJob + defaultExceptionHandler
-
-    private val supervisorJob = SupervisorJob()
-    private val defaultExceptionHandler = CoroutineExceptionHandler { _, exception ->
-        handleCoroutineException(exception)
-    }
-
-    private val _events = MutableLiveData<ViewEvent>()
-    val events: LiveData<ViewEvent> = _events
     private val _isMoveToPreviousAvailable = MutableLiveData(false)
     val isMoveToPreviousAvailable : LiveData<Boolean> = _isMoveToPreviousAvailable
     private val _isLoadingVisible = MutableLiveData(false)
@@ -45,21 +29,23 @@ class MainFragmentViewModel @Inject constructor(
 
         val model = repository.loadNext()
 
-        _events.value = ToNextPage(model.url)
+        postViewEvents(ToNextPage(model.url))
         currentPage++
         _isMoveToPreviousAvailable.value = true
     }
 
-    fun onPreviousClick() = launch {
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    fun onCreate() = launch {
 
-        _events.value = ToPreviousPage("dawd")
-        currentPage--
-        _isMoveToPreviousAvailable.value = currentPage > 0
+        val model = repository.loadNext()
+        postViewEvents(StartPage(model.url))
     }
 
-    private fun handleCoroutineException(exception: Throwable) {
 
-        Log.e("MY_DEBUG", "handleCoroutineException: ${exception.message}")
+    fun onPreviousClick() = launch {
 
+        postViewEvents(ToPreviousPage("dawd"))
+        currentPage--
+        _isMoveToPreviousAvailable.value = currentPage > 0
     }
 }
