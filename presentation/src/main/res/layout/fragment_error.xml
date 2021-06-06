@@ -7,37 +7,36 @@
     android:layout_height="match_parent"
     tools:context=".fragment.error.ErrorFragment">
 
-
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/view_error_fragment_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_baseline_cloud_queue_24"
+        android:layout_marginBottom="@dimen/margin1"
+        android:src="@drawable/ic_cloud_error"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/view_error_fragment_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin1"
         android:gravity="center"
-        android:text="Произошла ошибка при загрузке данных. Проверьте подключение к сети."
+        android:text="@string/error_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/view_error_fragment_image" />
 
     <Button
         android:id="@+id/view_error_fragment_repeat_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Повторить"
+        android:layout_marginTop="@dimen/margin1"
+        android:text="@string/error_repeat_btn_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/view_error_fragment_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

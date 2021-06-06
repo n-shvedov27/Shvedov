@@ -26,5 +26,4 @@ class ErrorFragment : Fragment() {
             viewModel.loadCurrentPageData()
         }
     }
-
 }

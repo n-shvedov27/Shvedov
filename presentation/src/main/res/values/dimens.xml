@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin1">10dp</dimen>
+    <dimen name="card_radius">10dp</dimen>
+    <dimen name="page_image_size">300dp</dimen>
+    <dimen name="page_text_width">200dp</dimen>
+</resources>

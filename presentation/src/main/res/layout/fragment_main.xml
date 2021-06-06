@@ -30,32 +30,32 @@
             android:id="@+id/prv_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="@dimen/margin1"
+            android:layout_marginBottom="@dimen/margin1"
             android:enabled="@{vmMainFragment.isMoveToPreviousAvailable}"
             android:onClick="@{() -> vmMainFragment.onPreviousClick()}"
-            android:src="@drawable/ic_baseline_replay_24"
+            android:src="@drawable/ic_replay"
             app:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/next_btn"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:tint="#FFC800" />
+            app:tint="@color/previous_button_color" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/next_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="@dimen/margin1"
+            android:layout_marginBottom="@dimen/margin1"
             android:onClick="@{() -> vmMainFragment.onNextClick()}"
-            android:src="@drawable/ic_baseline_arrow_forward_24"
+            android:src="@drawable/ic_arrow_forward"
             app:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/prv_button"
-            app:tint="#44FF00" />
+            app:tint="@color/next_button_color" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

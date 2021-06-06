@@ -2,7 +2,6 @@ package com.example.sirius.app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
 import com.example.sirius.R
 import com.example.sirius.fragment.main.MainFragment
 

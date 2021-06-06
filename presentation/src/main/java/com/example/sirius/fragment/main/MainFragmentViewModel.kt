@@ -4,7 +4,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
-import com.example.domain.ImageRepository
 import com.example.domain.use_case.get_image_by_index.GetImageByIndex
 import com.example.sirius.core.vm.BaseViewModel
 import com.example.sirius.fragment.main.event.StartPage
