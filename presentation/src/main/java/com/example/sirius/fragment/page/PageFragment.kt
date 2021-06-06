@@ -4,63 +4,48 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import com.example.domain.SearchType
+import android.widget.ImageView
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.sirius.R
-import com.example.sirius.core.di.UIComponent
-import com.example.sirius.core.ui.BaseFragment
-import com.example.sirius.fragment.image.ImageFragment
-import com.example.sirius.fragment.page.di.PageFragmentComponentHolder
 
-private const val SEARCH_TYPE = "search_type"
+private const val URL_PARAM = "param2"
 
-class PageFragment : BaseFragment()  {
-
-    private lateinit var searchType: SearchType
+class PageFragment : Fragment() {
 
     companion object {
-        @JvmStatic fun newInstance(param1: SearchType) = PageFragment().apply {
-            arguments = Bundle().apply { putSerializable(SEARCH_TYPE, param1) }
+
+        @JvmStatic
+        fun newInstance(url: String) = PageFragment().apply {
+            arguments = Bundle().apply { putString(URL_PARAM, url) }
         }
     }
 
+    private var url: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let { searchType = it.getSerializable(SEARCH_TYPE) as SearchType }
+        arguments?.let { url = it.getString(URL_PARAM) }
     }
 
-    private val viewModel: PageFragmentViewModel by injectViewModel()
-
-    override fun diComponent(): UIComponent = PageFragmentComponentHolder.getComponent()
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return inflater.inflate(R.layout.fragment_page, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (savedInstanceState == null) {
-            childFragmentManager.beginTransaction()
-                .add(R.id.image_fragment, ImageFragment())
-                .commit()
+        val imageView = view.findViewById<ImageView>(R.id.imageView)
 
-        }
-
-        view.findViewById<Button>(R.id.next_btn).setOnClickListener {
-
-            childFragmentManager.beginTransaction()
-                .setCustomAnimations(
-                    R.animator.card_flip_right_enter,
-                    R.animator.card_flip_right_exit,
-                    R.animator.card_flip_left_enter,
-                    R.animator.card_flip_left_exit
-                )
-                .replace(R.id.image_fragment, ImageFragment())
-                .addToBackStack(null)
-                .commit()
-        }
+        Glide.with(this).load(url)
+            .thumbnail(
+                Glide.with(this).load(R.drawable.loader)
+            )
+            .fitCenter()
+            .into(imageView)
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.sirius.fragment.image.di.module
+package com.example.sirius.fragment.main.di.module
 
 import com.example.data.ImageRepositoryImpl
 import com.example.domain.ImageRepository
@@ -6,7 +6,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class ImageFragmentDataModule {
+abstract class MainFragmentDataModule {
 
     @Binds
     abstract fun bindImageRepository(repository: ImageRepositoryImpl): ImageRepository
