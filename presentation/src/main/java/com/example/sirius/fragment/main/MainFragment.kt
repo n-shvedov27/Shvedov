@@ -20,8 +20,8 @@ class MainFragment : BaseFragment()  {
     fun showNextPageFragment(imageItem: ImageItem) {
         childFragmentManager.beginTransaction()
             .setCustomAnimations(
-                R.animator.card_flip_right_enter,
-                R.animator.card_flip_right_exit
+                R.anim.enter_from_left,
+                R.anim.enter_from_right
             )
             .replace(R.id.image_fragment, PageFragment.newInstance(imageItem))
             .commit()
@@ -30,8 +30,8 @@ class MainFragment : BaseFragment()  {
     fun showPreviousPageFragment(imageItem: ImageItem) {
         childFragmentManager.beginTransaction()
             .setCustomAnimations(
-                R.animator.card_flip_left_enter,
-                R.animator.card_flip_left_exit
+                R.anim.exit_from_right,
+                R.anim.exit_from_left
             )
             .replace(R.id.image_fragment, PageFragment.newInstance(imageItem))
             .commit()
